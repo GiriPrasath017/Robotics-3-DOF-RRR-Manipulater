@@ -5,10 +5,15 @@
 This image provides a preview of our 3 DOF articulated RRR manipulator website. The interface is designed for intuitive interaction and real-time updates using HTML, CSS, and JavaScript.
 
 ## Simulation Demonstration in Website
+Below is an image preview of the simulation:
 
-This video demonstrates the real-time simulation of our 3 DOF articulated RRR manipulator in our website. Watch how the manipulator responds to user inputs and visualizes the kinematic modeling.
+![IMG preview](./simg.png)
 
-![Video Demonstration of the 3 DOF Manipulator](./pvideo.mp4)
+And here is the video demonstrates the real-time simulation of our 3 DOF articulated RRR manipulator in our website. Watch how the manipulator responds to user inputs and visualizes the kinematic modeling:
+
+[Video Demonstration of the 3 DOF Manipulator](./pvideo.mp4)
+
+
 
 ## Features
 
