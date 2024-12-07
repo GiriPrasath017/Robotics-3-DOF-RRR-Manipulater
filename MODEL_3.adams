@@ -1,0 +1,661 @@
+! CMD Version:2
+! Version 2 enables expanded acceptable characters for object names.
+! If unspecified, set to 1 or set to an invalid value, Adams View assumes traditional naming requirements.
+!
+!-------------------------- Default Units for Model ---------------------------!
+!
+!
+defaults units  &
+   length = meter  &
+   angle = deg  &
+   force = newton  &
+   mass = kg  &
+   time = sec
+!
+defaults units  &
+   coordinate_system_type = cartesian  &
+   orientation_type = body313
+!
+!------------------------ Default Attributes for Model ------------------------!
+!
+!
+defaults attributes  &
+   inheritance = bottom_up  &
+   icon_visibility = on  &
+   grid_visibility = off  &
+   size_of_icons = 5.0E-02  &
+   spacing_for_grid = 1.0
+!
+!------------------------------ Adams View Model ------------------------------!
+!
+!
+model create  &
+   model_name = MODEL_3
+!
+view erase
+!
+!--------------------------------- Materials ----------------------------------!
+!
+!
+material create  &
+   material_name = .MODEL_3.steel  &
+   adams_id = 1  &
+   density = 7801.0  &
+   youngs_modulus = 2.07E+11  &
+   poissons_ratio = 0.29
+!
+!-------------------------------- Rigid Parts ---------------------------------!
+!
+! Create parts and their dependent markers and graphics
+!
+!----------------------------------- ground -----------------------------------!
+!
+!
+! ****** Ground Part ******
+!
+defaults model  &
+   part_name = ground
+!
+defaults coordinate_system  &
+   default_coordinate_system = .MODEL_3.ground
+!
+! ****** Markers for current part ******
+!
+marker create  &
+   marker_name = .MODEL_3.ground.MARKER_5  &
+   adams_id = 5  &
+   location = 0.0, -0.2, 0.0  &
+   orientation = 180.0d, 90.0d, 180.0d
+!
+part create rigid_body mass_properties  &
+   part_name = .MODEL_3.ground  &
+   material_type = .MODEL_3.steel
+!
+part attributes  &
+   part_name = .MODEL_3.ground  &
+   name_visibility = off  &
+   size_of_icons = 1.0E-02
+!
+!----------------------------------- PART_2 -----------------------------------!
+!
+!
+defaults coordinate_system  &
+   default_coordinate_system = .MODEL_3.ground
+!
+part create rigid_body name_and_position  &
+   part_name = .MODEL_3.PART_2  &
+   adams_id = 2  &
+   location = 0.0, 0.0, 0.0  &
+   orientation = 0.0d, 0.0d, 0.0d
+!
+defaults coordinate_system  &
+   default_coordinate_system = .MODEL_3.PART_2
+!
+! ****** Markers for current part ******
+!
+marker create  &
+   marker_name = .MODEL_3.PART_2.MARKER_1  &
+   adams_id = 1  &
+   location = 0.0, 0.0, 0.0  &
+   orientation = 0.0d, 90.0d, 0.0d
+!
+marker create  &
+   marker_name = .MODEL_3.PART_2.cm  &
+   adams_id = 8  &
+   location = 0.0, -0.2, 0.0  &
+   orientation = 0.0d, 90.0d, 0.0d
+!
+marker create  &
+   marker_name = .MODEL_3.PART_2.MARKER_4  &
+   adams_id = 4  &
+   location = 0.0, -0.2, 0.0  &
+   orientation = 180.0d, 90.0d, 180.0d
+!
+marker create  &
+   marker_name = .MODEL_3.PART_2.MARKER_28  &
+   adams_id = 28  &
+   location = 0.0, 0.0, 0.0  &
+   orientation = 0.0d, 0.0d, 0.0d
+!
+part create rigid_body mass_properties  &
+   part_name = .MODEL_3.PART_2  &
+   material_type = .MODEL_3.steel
+!
+! ****** Graphics for current part ******
+!
+geometry create shape cylinder  &
+   cylinder_name = .MODEL_3.PART_2.CYLINDER_1  &
+   adams_id = 1  &
+   center_marker = .MODEL_3.PART_2.MARKER_1  &
+   angle_extent = 360.0  &
+   length = 0.4  &
+   radius = 5.0E-02  &
+   side_count_for_body = 20  &
+   segment_count_for_ends = 20
+!
+part attributes  &
+   part_name = .MODEL_3.PART_2  &
+   color = RED  &
+   name_visibility = off  &
+   size_of_icons = 1.0E-02
+!
+!----------------------------------- PART_3 -----------------------------------!
+!
+!
+defaults coordinate_system  &
+   default_coordinate_system = .MODEL_3.ground
+!
+part create rigid_body name_and_position  &
+   part_name = .MODEL_3.PART_3  &
+   adams_id = 3  &
+   location = 0.0, 0.0, 0.0  &
+   orientation = 0.0d, 0.0d, 0.0d
+!
+defaults coordinate_system  &
+   default_coordinate_system = .MODEL_3.PART_3
+!
+! ****** Markers for current part ******
+!
+marker create  &
+   marker_name = .MODEL_3.PART_3.MARKER_2  &
+   adams_id = 2  &
+   location = 0.0, 0.0, 0.0  &
+   orientation = 0.0d, 0.0d, 0.0d
+!
+marker create  &
+   marker_name = .MODEL_3.PART_3.cm  &
+   adams_id = 9  &
+   location = 0.0, 0.0, 0.0  &
+   orientation = 270.0d, 90.0d, 90.0d
+!
+marker create  &
+   marker_name = .MODEL_3.PART_3.MARKER_7  &
+   adams_id = 7  &
+   location = 0.0, 0.0, 0.0  &
+   orientation = 0.0d, 0.0d, 0.0d
+!
+marker create  &
+   marker_name = .MODEL_3.PART_3.MARKER_29  &
+   adams_id = 29  &
+   location = 0.0, 0.0, 0.0  &
+   orientation = 0.0d, 0.0d, 0.0d
+!
+part create rigid_body mass_properties  &
+   part_name = .MODEL_3.PART_3  &
+   material_type = .MODEL_3.steel
+!
+! ****** Graphics for current part ******
+!
+geometry create shape torus  &
+   adams_id = 2  &
+   torus_name = .MODEL_3.PART_3.TORUS_2  &
+   center_marker = .MODEL_3.PART_3.MARKER_2  &
+   angle_extent = 360.0  &
+   major_radius = 5.3033008589E-02  &
+   minor_radius = 1.767766953E-02  &
+   side_count_for_perimeter = 20  &
+   segment_count = 20
+!
+part attributes  &
+   part_name = .MODEL_3.PART_3  &
+   color = GREEN  &
+   name_visibility = off  &
+   size_of_icons = 1.0E-02
+!
+!----------------------------------- PART_4 -----------------------------------!
+!
+!
+defaults coordinate_system  &
+   default_coordinate_system = .MODEL_3.ground
+!
+part create rigid_body name_and_position  &
+   part_name = .MODEL_3.PART_4  &
+   adams_id = 4  &
+   location = 0.0, 0.0, 0.0  &
+   orientation = 330.0d, 0.0d, 0.0d
+!
+defaults coordinate_system  &
+   default_coordinate_system = .MODEL_3.PART_4
+!
+! ****** Markers for current part ******
+!
+marker create  &
+   marker_name = .MODEL_3.PART_4.MARKER_3  &
+   adams_id = 3  &
+   location = 0.0, 0.0, 0.0  &
+   orientation = 180.0d, 90.0d, 180.0d
+!
+marker create  &
+   marker_name = .MODEL_3.PART_4.cm  &
+   adams_id = 10  &
+   location = 0.0, 0.175, 0.0  &
+   orientation = 0.0d, 90.0d, 0.0d
+!
+marker create  &
+   marker_name = .MODEL_3.PART_4.MARKER_6  &
+   adams_id = 6  &
+   location = 0.0, 0.0, 0.0  &
+   orientation = 30.0d, 0.0d, 0.0d
+!
+marker create  &
+   marker_name = .MODEL_3.PART_4.MARKER_19  &
+   adams_id = 19  &
+   location = 1.2276568651E-11, 0.35, 0.0  &
+   orientation = 30.0d, 0.0d, 0.0d
+!
+part create rigid_body mass_properties  &
+   part_name = .MODEL_3.PART_4  &
+   material_type = .MODEL_3.steel
+!
+! ****** Graphics for current part ******
+!
+geometry create shape cylinder  &
+   cylinder_name = .MODEL_3.PART_4.CYLINDER_3  &
+   adams_id = 3  &
+   center_marker = .MODEL_3.PART_4.MARKER_3  &
+   angle_extent = 360.0  &
+   length = 0.35  &
+   radius = 4.375E-02  &
+   side_count_for_body = 20  &
+   segment_count_for_ends = 20
+!
+part attributes  &
+   part_name = .MODEL_3.PART_4  &
+   color = MAIZE  &
+   name_visibility = off  &
+   size_of_icons = 1.0E-02
+!
+!----------------------------------- PART_7 -----------------------------------!
+!
+!
+defaults coordinate_system  &
+   default_coordinate_system = .MODEL_3.ground
+!
+part create rigid_body name_and_position  &
+   part_name = .MODEL_3.PART_7  &
+   adams_id = 7  &
+   location = 0.0, 0.0, 0.0  &
+   orientation = 0.0d, 0.0d, 0.0d
+!
+defaults coordinate_system  &
+   default_coordinate_system = .MODEL_3.PART_7
+!
+! ****** Markers for current part ******
+!
+marker create  &
+   marker_name = .MODEL_3.PART_7.MARKER_18  &
+   adams_id = 18  &
+   location = 0.175, 0.3031088913, 0.0  &
+   orientation = 0.0d, 0.0d, 0.0d
+!
+marker create  &
+   marker_name = .MODEL_3.PART_7.cm  &
+   adams_id = 21  &
+   location = 0.175, 0.3031088913, 0.0  &
+   orientation = 180.0d, 90.0d, 90.0d
+!
+marker create  &
+   marker_name = .MODEL_3.PART_7.MARKER_20  &
+   adams_id = 20  &
+   location = 0.175, 0.3031088913, 0.0  &
+   orientation = 0.0d, 0.0d, 0.0d
+!
+marker create  &
+   marker_name = .MODEL_3.PART_7.MARKER_23  &
+   adams_id = 23  &
+   location = 0.175, 0.3031088913, 0.0  &
+   orientation = 0.0d, 0.0d, 0.0d
+!
+part create rigid_body mass_properties  &
+   part_name = .MODEL_3.PART_7  &
+   material_type = .MODEL_3.steel
+!
+! ****** Graphics for current part ******
+!
+geometry create shape torus  &
+   adams_id = 6  &
+   torus_name = .MODEL_3.PART_7.TORUS_6  &
+   center_marker = .MODEL_3.PART_7.MARKER_18  &
+   angle_extent = 360.0  &
+   major_radius = 4.4024133338E-02  &
+   minor_radius = 1.4674711113E-02  &
+   side_count_for_perimeter = 20  &
+   segment_count = 20
+!
+part attributes  &
+   part_name = .MODEL_3.PART_7  &
+   color = RED  &
+   name_visibility = off  &
+   size_of_icons = 1.0E-02
+!
+!----------------------------------- PART_8 -----------------------------------!
+!
+!
+defaults coordinate_system  &
+   default_coordinate_system = .MODEL_3.ground
+!
+part create rigid_body name_and_position  &
+   part_name = .MODEL_3.PART_8  &
+   adams_id = 8  &
+   location = -0.288156986, 5.0897459597E-02, 0.0  &
+   orientation = 330.0d, 0.0d, 0.0d
+!
+defaults coordinate_system  &
+   default_coordinate_system = .MODEL_3.PART_8
+!
+! ****** Markers for current part ******
+!
+marker create  &
+   marker_name = .MODEL_3.PART_8.MARKER_22  &
+   adams_id = 22  &
+   location = 0.1, 0.45, 0.0  &
+   orientation = 90.0d, 90.0d, 0.0d
+!
+marker create  &
+   marker_name = .MODEL_3.PART_8.cm  &
+   adams_id = 25  &
+   location = 0.275, 0.45, 0.0  &
+   orientation = 270.0d, 90.0d, 90.0d
+!
+marker create  &
+   marker_name = .MODEL_3.PART_8.MARKER_24  &
+   adams_id = 24  &
+   location = 0.275, 0.45, 0.0  &
+   orientation = 30.0d, 0.0d, 0.0d
+!
+marker create  &
+   marker_name = .MODEL_3.PART_8.MARKER_32  &
+   adams_id = 32  &
+   location = 0.275, 0.45, 0.0  &
+   orientation = 270.0d, 90.0d, 0.0d
+!
+part create rigid_body mass_properties  &
+   part_name = .MODEL_3.PART_8  &
+   material_type = .MODEL_3.steel
+!
+! ****** Graphics for current part ******
+!
+geometry create shape cylinder  &
+   cylinder_name = .MODEL_3.PART_8.CYLINDER_7  &
+   adams_id = 7  &
+   center_marker = .MODEL_3.PART_8.MARKER_22  &
+   angle_extent = 360.0  &
+   length = 0.35  &
+   radius = 4.375E-02  &
+   side_count_for_body = 20  &
+   segment_count_for_ends = 20
+!
+part attributes  &
+   part_name = .MODEL_3.PART_8  &
+   color = MAIZE  &
+   name_visibility = off  &
+   size_of_icons = 1.0E-02
+!
+!----------------------------------- PART_9 -----------------------------------!
+!
+!
+defaults coordinate_system  &
+   default_coordinate_system = .MODEL_3.ground
+!
+part create rigid_body name_and_position  &
+   part_name = .MODEL_3.PART_9  &
+   adams_id = 9  &
+   location = 0.0, 0.0, 0.0  &
+   orientation = 0.0d, 0.0d, 0.0d
+!
+defaults coordinate_system  &
+   default_coordinate_system = .MODEL_3.PART_9
+!
+! ****** Markers for current part ******
+!
+marker create  &
+   marker_name = .MODEL_3.PART_9.MARKER_30  &
+   adams_id = 30  &
+   location = 0.175, 0.3031088913, 0.0  &
+   orientation = 59.4936774148d, 90.0d, 0.0d
+!
+marker create  &
+   marker_name = .MODEL_3.PART_9.cm  &
+   adams_id = 33  &
+   location = 0.2625, 0.2515544457, 0.0  &
+   orientation = 59.4936774148d, 90.0d, 0.0d
+!
+marker create  &
+   marker_name = .MODEL_3.PART_9.MARKER_31  &
+   adams_id = 31  &
+   location = 0.175, 0.3031088913, 0.0  &
+   orientation = 240.0d, 90.0d, 0.0d
+!
+part create rigid_body mass_properties  &
+   part_name = .MODEL_3.PART_9  &
+   material_type = .MODEL_3.steel
+!
+! ****** Graphics for current part ******
+!
+geometry create shape cylinder  &
+   cylinder_name = .MODEL_3.PART_9.CYLINDER_8  &
+   adams_id = 8  &
+   center_marker = .MODEL_3.PART_9.MARKER_30  &
+   angle_extent = 360.0  &
+   length = 0.2031168222  &
+   radius = 2.5389602776E-02  &
+   side_count_for_body = 20  &
+   segment_count_for_ends = 20
+!
+part attributes  &
+   part_name = .MODEL_3.PART_9  &
+   color = GREEN  &
+   name_visibility = off
+!
+!----------------------------------- Joints -----------------------------------!
+!
+!
+constraint create joint revolute  &
+   joint_name = .MODEL_3.JOINT_1  &
+   adams_id = 1  &
+   i_marker_name = .MODEL_3.PART_2.MARKER_4  &
+   j_marker_name = .MODEL_3.ground.MARKER_5
+!
+constraint attributes  &
+   constraint_name = .MODEL_3.JOINT_1  &
+   name_visibility = off
+!
+constraint create joint revolute  &
+   joint_name = .MODEL_3.JOINT_2  &
+   adams_id = 2  &
+   i_marker_name = .MODEL_3.PART_4.MARKER_6  &
+   j_marker_name = .MODEL_3.PART_3.MARKER_7
+!
+constraint attributes  &
+   constraint_name = .MODEL_3.JOINT_2  &
+   name_visibility = off
+!
+constraint create joint fixed  &
+   joint_name = .MODEL_3.JOINT_6  &
+   adams_id = 6  &
+   i_marker_name = .MODEL_3.PART_2.MARKER_28  &
+   j_marker_name = .MODEL_3.PART_3.MARKER_29
+!
+constraint attributes  &
+   constraint_name = .MODEL_3.JOINT_6  &
+   name_visibility = off
+!
+constraint create joint revolute  &
+   joint_name = .MODEL_3.JOINT_4  &
+   adams_id = 4  &
+   i_marker_name = .MODEL_3.PART_4.MARKER_19  &
+   j_marker_name = .MODEL_3.PART_7.MARKER_20
+!
+constraint attributes  &
+   constraint_name = .MODEL_3.JOINT_4  &
+   name_visibility = off
+!
+constraint create joint revolute  &
+   joint_name = .MODEL_3.JOINT_5  &
+   adams_id = 5  &
+   i_marker_name = .MODEL_3.PART_7.MARKER_23  &
+   j_marker_name = .MODEL_3.PART_8.MARKER_24
+!
+constraint attributes  &
+   constraint_name = .MODEL_3.JOINT_5  &
+   name_visibility = off
+!
+constraint create joint translational  &
+   joint_name = .MODEL_3.JOINT_7  &
+   adams_id = 7  &
+   i_marker_name = .MODEL_3.PART_9.MARKER_31  &
+   j_marker_name = .MODEL_3.PART_8.MARKER_32
+!
+constraint attributes  &
+   constraint_name = .MODEL_3.JOINT_7  &
+   name_visibility = off
+!
+!----------------------------------- Forces -----------------------------------!
+!
+!
+!----------------------------- Simulation Scripts -----------------------------!
+!
+!
+simulation script create  &
+   sim_script_name = .MODEL_3.Last_Sim  &
+   commands =   &
+              "simulation single_run transient type=auto_select initial_static=no duration=50.0 number_of_steps=500 model_name=.MODEL_3"
+!
+!---------------------------------- Motions -----------------------------------!
+!
+!
+constraint create motion_generator  &
+   motion_name = .MODEL_3.MOTION_1  &
+   adams_id = 1  &
+   type_of_freedom = rotational  &
+   joint_name = .MODEL_3.JOINT_1  &
+   function = ""
+!
+constraint attributes  &
+   constraint_name = .MODEL_3.MOTION_1  &
+   name_visibility = off
+!
+constraint create motion_generator  &
+   motion_name = .MODEL_3.MOTION_5  &
+   adams_id = 5  &
+   type_of_freedom = rotational  &
+   joint_name = .MODEL_3.JOINT_2  &
+   function = ""
+!
+constraint attributes  &
+   constraint_name = .MODEL_3.MOTION_5  &
+   name_visibility = off
+!
+constraint create motion_generator  &
+   motion_name = .MODEL_3.MOTION_3  &
+   adams_id = 3  &
+   type_of_freedom = rotational  &
+   joint_name = .MODEL_3.JOINT_5  &
+   function = ""
+!
+constraint attributes  &
+   constraint_name = .MODEL_3.MOTION_3  &
+   name_visibility = off
+!
+constraint create motion_generator  &
+   motion_name = .MODEL_3.MOTION_4  &
+   adams_id = 4  &
+   type_of_freedom = rotational  &
+   joint_name = .MODEL_3.JOINT_4  &
+   function = ""
+!
+constraint attributes  &
+   constraint_name = .MODEL_3.MOTION_4  &
+   name_visibility = off
+!
+constraint create motion_generator  &
+   motion_name = .MODEL_3.MOTION_6  &
+   adams_id = 6  &
+   type_of_freedom = translational  &
+   joint_name = .MODEL_3.JOINT_7  &
+   function = ""
+!
+constraint attributes  &
+   constraint_name = .MODEL_3.MOTION_6  &
+   name_visibility = off
+!
+!---------------------------------- Accgrav -----------------------------------!
+!
+!
+force create body gravitational  &
+   gravity_field_name = gravity  &
+   y_component_gravity = -9.80665
+!
+force attributes  &
+   force_name = .MODEL_3.gravity  &
+   visibility = off
+!
+!----------------------------- Analysis settings ------------------------------!
+!
+!
+!---------------------------- Function definitions ----------------------------!
+!
+!
+constraint modify motion_generator  &
+   motion_name = .MODEL_3.MOTION_1  &
+   function = "30.0d * time"
+!
+constraint modify motion_generator  &
+   motion_name = .MODEL_3.MOTION_5  &
+   function = "STEP(time, 0.0, 0.0d, 3.0, -90.0d)+STEP(time, 3.0, 0.0d, 6.0, 90.0d)"
+!
+constraint modify motion_generator  &
+   motion_name = .MODEL_3.MOTION_3  &
+   function = "STEP(time, 0.0, 0.0d, 3.0, 15.0d)+STEP(time, 3.0, 0.0d, 6.0, -15.0d)"
+!
+constraint modify motion_generator  &
+   motion_name = .MODEL_3.MOTION_4  &
+   function = "STEP(time, 0.0, 0.0d, 3.0, 60.0d)+STEP(time, 3.0, 0.0d, 6.0, -60.0d)"
+!
+constraint modify motion_generator  &
+   motion_name = .MODEL_3.MOTION_6  &
+   function = "10.0 * time"
+!
+!--------------------------- Expression definitions ---------------------------!
+!
+!
+defaults coordinate_system  &
+   default_coordinate_system = ground
+!
+geometry modify shape cylinder  &
+   cylinder_name = .MODEL_3.PART_2.CYLINDER_1  &
+   length = (0.4meter)  &
+   radius = (5.0E-02meter)
+!
+geometry modify shape torus  &
+   torus_name = .MODEL_3.PART_3.TORUS_2  &
+   major_radius = (5.3033008589E-02meter)  &
+   minor_radius = (1.767766953E-02meter)
+!
+geometry modify shape cylinder  &
+   cylinder_name = .MODEL_3.PART_4.CYLINDER_3  &
+   length = (0.35meter)  &
+   radius = (4.375E-02meter)
+!
+geometry modify shape torus  &
+   torus_name = .MODEL_3.PART_7.TORUS_6  &
+   major_radius = (4.4024133338E-02meter)  &
+   minor_radius = (1.4674711113E-02meter)
+!
+geometry modify shape cylinder  &
+   cylinder_name = .MODEL_3.PART_8.CYLINDER_7  &
+   length = (0.35meter)  &
+   radius = (4.375E-02meter)
+!
+geometry modify shape cylinder  &
+   cylinder_name = .MODEL_3.PART_9.CYLINDER_8  &
+   length = (0.2031168222meter)  &
+   radius = (2.5389602776E-02meter)
+!
+material modify  &
+   material_name = .MODEL_3.steel  &
+   density = (7801.0(kg/meter**3))  &
+   youngs_modulus = (2.07E+11(Newton/meter**2))
+!
+model display  &
+   model_name = MODEL_3
